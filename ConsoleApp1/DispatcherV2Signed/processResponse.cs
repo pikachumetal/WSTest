@@ -3,6 +3,7 @@ using System.Xml;
 
 namespace ConsoleApp1.DispatcherV2Signed
 {
+    [MessageContract(IsWrapped = false)]
     public class processResponse
     {
         [MessageBodyMember(Namespace = "http://inti.notariado.org/XML", Order = 0)]

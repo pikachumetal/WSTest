@@ -30,8 +30,12 @@ namespace ConsoleApp1
             var client = new DispatcherV2SignedClient(GetCustomBinding(), endpoint);
 
             if(client == null) throw new ArgumentNullException(nameof(client));
-            client.ClientCredentials.ClientCertificate.Certificate = new X509Certificate2(@"cert.cer");
+            //client.ClientCredentials.ClientCertificate.Certificate = new X509Certificate2(@"cert.cer");
             client.ClientCredentials.ServiceCertificate.DefaultCertificate = new X509Certificate2(@"cert.cer");
+
+            var cert = new X509Certificate2();
+            cert.Import("cert.pfx", "nekane", X509KeyStorageFlags.DefaultKeySet);
+            client.ClientCredentials.ClientCertificate.Certificate = cert;
 
             var header = new SERVICE_DISPATCHER();
             var xDoc = new XmlDocument();
