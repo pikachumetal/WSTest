@@ -1,4 +1,6 @@
-﻿using System.ServiceModel;
+﻿using System;
+using System.Security.Cryptography.X509Certificates;
+using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Security;
 using System.ServiceModel.Security.Tokens;
@@ -26,6 +28,10 @@ namespace ConsoleApp1
 
             var endpoint = new EndpointAddress("https://test.e-notario.notariado.org/dispatcher-web/DispatcherV2Signed");
             var client = new DispatcherV2SignedClient(GetCustomBinding(), endpoint);
+
+            if(client == null) throw new ArgumentNullException(nameof(client));
+            client.ClientCredentials.ClientCertificate.Certificate = new X509Certificate2(@"cert.cer");
+            client.ClientCredentials.ServiceCertificate.DefaultCertificate = new X509Certificate2(@"cert.cer");
 
             var header = new SERVICE_DISPATCHER();
             var xDoc = new XmlDocument();

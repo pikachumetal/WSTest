@@ -34,6 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.Runtime.Serialization" />
@@ -46,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AsymetricSecurityBE.cs" />
     <Compile Include="Connected Services\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -64,15 +66,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="cert.cer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Connected Services\ServiceReference1\ConsoleApp1.ServiceReference1.processResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\ServiceReference1\DispatcherV2Signed.wsdl" />
     <None Include="DispatcherV2Signed.wsdl" />
+    <None Include="docs.md" />
     <None Include="Properties\DataSources\System.Xml.XmlElement.datasource" />
-    <Content Include="soapui_CGN.JKS">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <None Include="soapui_CGN.JKS" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
