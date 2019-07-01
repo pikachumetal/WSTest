@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+    xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurityutility-1.0.xsd" 
+    xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
+    xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" 
+    xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+    xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+    xmlns:intf="http://inti.notariado.org/XML" 
+    xmlns:impl="http://inti.notariado.org/XML" 
+    xmlns:apachesoap="http://xml.apache.org/xml-soap" 
+    xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://inti.notariado.org/XML">
+    <types>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+            xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wsswssecurity-utility-1.0.xsd" 
+            xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" 
+            xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" 
+            xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+            xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" 
+            xmlns:intf="http://inti.notariado.org/XML" 
+            xmlns:impl="http://inti.notariado.org/XML" 
+            xmlns:apachesoap="http://xml.apache.org/xml-soap" 
+            xmlns="http://inti.notariado.org/XML" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://inti.notariado.org/XML">
+            <xsd:element name="SERVICE_DISPATCHER">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="TIMESTAMP" type="xsd:dateTime">
+                            <xsd:annotation>
+                                <xsd:documentation>Timestamping sobre el envio del mensaje (AAAA-MMDDThh:mm:ss)</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="TIPO_MSJ" type="TIPO_MENSAJEType">
+                            <xsd:annotation>
+                                <xsd:documentation>Tipo de mensaje ( "1" Petición, "2" Respuesta)</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="EMISOR" type="CODIGO_NOTARIAType">
+                            <xsd:annotation>
+                                <xsd:documentation>Entidad emisora del mensaje (Código de la notaría)</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element fixed="CGN" name="RECEP" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:documentation>Entidad receptora del mensaje ("CGN" Código del CGN)</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="CUV" type="CODIGO_NOTARIOType">
+                            <xsd:annotation>
+                                <xsd:documentation>Código del Notario (Código de Ultimas Voluntades)</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="SERVICIO" type="xsd:string">
+                            <xsd:annotation>
+                                <xsd:documentation>Código del servicio</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                        <xsd:element name="GENERADOR" type="GENERADORType">
+                            <xsd:annotation>
+                                <xsd:documentation>Bloque con datos relativos al proveedor de la aplicación y a la aplicación generadora del XML</xsd:documentation>
+                            </xsd:annotation>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:simpleType name="CODIGO_NOTARIAType">
+                <xsd:restriction base="xsd:string">
+                    <xsd:pattern value="[0-9]{9}"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+            <xsd:simpleType name="CODIGO_NOTARIOType">
+                <xsd:restriction base="xsd:string">
+                    <xsd:pattern value="[0-9]{7}"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+            <xsd:simpleType name="TIPO_MENSAJEType">
+                <xsd:restriction base="xsd:byte">
+                    <xsd:enumeration value="1"/>
+                    <xsd:enumeration value="2"/>
+                </xsd:restriction>
+            </xsd:simpleType>
+            <xsd:element name="SERVICE_DISPATCHER_REQUEST">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:any namespace="##any" processContents="lax"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="SERVICE_DISPATCHER_RESPONSE">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:any namespace="##any" processContents="lax"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:complexType name="ServiceDispatcherException">
+                <xsd:sequence>
+                    <xsd:element name="info" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="fault" type="ServiceDispatcherException"/>
+            <xsd:complexType name="GENERADORType">
+                <xsd:sequence>
+                    <xsd:element name="NOMBRE_PROVEEDOR" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>Nombre del proveedor de la aplicación</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="NOMBRE_APLICACION" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>Nombre de la aplicación</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="VERSION_APLICACION" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>Versión de la aplicación</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:complexType>
+        </xsd:schema>
+    </types>
+    <message name="processResponse">
+        <part element="impl:SERVICE_DISPATCHER_RESPONSE" name="processReturn">
+        </part>
+    </message>
+    <message name="ServiceDispatcherException">
+        <part element="impl:fault" name="fault">
+        </part>
+    </message>
+    <message name="processRequest">
+        <part element="impl:SERVICE_DISPATCHER_REQUEST" name="part">
+        </part>
+        <part element="impl:SERVICE_DISPATCHER" name="request_header">
+        </part>
+    </message>
+    <portType name="ServiceDispatcher">
+        <operation name="process">
+            <input message="impl:processRequest" name="processRequest">
+            </input>
+            <output message="impl:processResponse" name="processResponse">
+            </output>
+            <fault message="impl:ServiceDispatcherException" name="ServiceDispatcherException">
+            </fault>
+        </operation>
+    </portType>
+    <binding name="ServiceDispatcherSoapBinding" type="impl:ServiceDispatcher">
+        <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <operation name="process">
+            <wsdlsoap:operation soapAction=""/>
+            <input name="processRequest">
+                <wsdlsoap:header message="impl:processRequest" part="request_header" use="literal">
+                </wsdlsoap:header>
+                <wsdlsoap:body use="literal"/>
+            </input>
+            <output name="processResponse">
+                <wsdlsoap:body use="literal"/>
+            </output>
+            <fault name="ServiceDispatcherException">
+                <wsdlsoap:fault name="ServiceDispatcherException" use="literal"/>
+            </fault>
+        </operation>
+    </binding>
+    <service name="DispatcherV2Signed">
+        <port binding="impl:ServiceDispatcherSoapBinding" name="DispatcherPortSigned">
+            <wsp:PolicyReference URI="#SigOnly"/>
+            <wsdlsoap:address location="http://localhost:6180/dispatcher-web/DispatcherV2Signed"/>
+        </port>
+    </service>
+    <wsp:Policy wsu:Id="SigOnly">
+        <wsp:ExactlyOne>
+            <wsp:All>
+                <sp:AsymmetricBinding xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+                    <wsp:Policy>
+                        <sp:InitiatorToken>
+                            <wsp:Policy>
+                                <sp:X509Token sp:IncludeToken="http://docs.oasis-open.org/ws-sx/wssecuritypolicy/200702/IncludeToken/Always">
+                                    <wsp:Policy>
+                                        <sp:WssX509V3Token10/>
+                                    </wsp:Policy>
+                                </sp:X509Token>
+                            </wsp:Policy>
+                        </sp:InitiatorToken>
+                        <sp:RecipientToken>
+                            <wsp:Policy>
+                                <sp:X509Token sp:IncludeToken="http://docs.oasis-open.org/ws-sx/wssecuritypolicy/200702/IncludeToken/Always">
+                                    <wsp:Policy>
+                                        <sp:WssX509V3Token10/>
+                                    </wsp:Policy>
+                                </sp:X509Token>
+                            </wsp:Policy>
+                        </sp:RecipientToken>
+                        <sp:AlgorithmSuite>
+                            <wsp:Policy>
+                                <sp:TripleDesRsa15/>
+                            </wsp:Policy>
+                        </sp:AlgorithmSuite>
+                        <sp:Layout>
+                            <wsp:Policy>
+                                <sp:Lax/>
+                            </wsp:Policy>
+                        </sp:Layout>
+                        <sp:IncludeTimestamp/>
+                        <sp:OnlySignEntireHeadersAndBody/>
+                    </wsp:Policy>
+                </sp:AsymmetricBinding>
+                <sp:Wss10 xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+                    <wsp:Policy>
+                        <sp:MustSupportRefKeyIdentifier/>
+                        <sp:MustSupportRefIssuerSerial/>
+                    </wsp:Policy>
+                </sp:Wss10>
+                <sp:SignedParts xmlns:sp="http://docs.oasis-open.org/ws-sx/ws-securitypolicy/200702">
+                    <sp:Body/>
+                </sp:SignedParts>
+            </wsp:All>
+        </wsp:ExactlyOne>
+    </wsp:Policy>
+</definitions>
