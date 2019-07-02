@@ -38,6 +38,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -47,7 +48,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AsymetricSecurityBE.cs" />
+    <Compile Include="Bindings\CustomTextMessage\ConfigurationStrings.cs" />
+    <Compile Include="Bindings\CustomTextMessage\CustomTextMessageEncoder.cs" />
+    <Compile Include="Bindings\CustomTextMessage\CustomTextMessageEncoderFactory.cs" />
+    <Compile Include="Bindings\CustomTextMessage\CustomTextMessageEncodingBindingElement.cs" />
+    <Compile Include="Bindings\CustomTextMessage\CustomTextMessageEncodingBindingSection.cs" />
+    <Compile Include="Bindings\CustomTextMessage\MessageVersionConverter.cs" />
     <Compile Include="Connected Services\ServiceReference1\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -66,10 +72,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <None Include="cert.cer">
+    <None Include="Certificates\clientelk.p12">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
-    <None Include="cert.pfx">
+    <None Include="Certificates\test_e-notario_ssl.cer">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Connected Services\ServiceReference1\ConsoleApp1.ServiceReference1.processResponse.datasource">
@@ -79,9 +85,6 @@
     <None Include="DispatcherV2Signed.wsdl" />
     <None Include="docs.md" />
     <None Include="Properties\DataSources\System.Xml.XmlElement.datasource" />
-    <None Include="cert.jks">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
@@ -101,5 +104,6 @@
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

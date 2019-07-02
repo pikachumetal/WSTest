@@ -35,7 +35,15 @@ namespace ConsoleApp1.DispatcherV2Signed
         [EditorBrowsable(EditorBrowsableState.Advanced)]
         processResponse IDispatcherV2SignedService.process(processRequest request)
         {
-            return Channel.process(request);
+            try
+            {
+                return Channel.process(request);
+            }
+            catch (System.Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }
