@@ -30,11 +30,13 @@ namespace ConsoleApp1
             var client = new DispatcherV2SignedClient(GetCustomBinding(), endpoint);
 
             if(client == null) throw new ArgumentNullException(nameof(client));
+            
+            var cert = new X509Certificate2();
+            cert.Import("cert.pfx", "nekane", X509KeyStorageFlags.DefaultKeySet);
+
             //client.ClientCredentials.ClientCertificate.Certificate = new X509Certificate2(@"cert.cer");
             client.ClientCredentials.ServiceCertificate.DefaultCertificate = new X509Certificate2(@"cert.cer");
 
-            var cert = new X509Certificate2();
-            cert.Import("cert.pfx", "nekane", X509KeyStorageFlags.DefaultKeySet);
             client.ClientCredentials.ClientCertificate.Certificate = cert;
 
             var header = new SERVICE_DISPATCHER();
@@ -71,6 +73,7 @@ namespace ConsoleApp1
                     X509ReferenceStyle = X509KeyIdentifierClauseType.Any,
                     InclusionMode = SecurityTokenInclusionMode.AlwaysToRecipient
                 },
+                
                 DefaultAlgorithmSuite = SecurityAlgorithmSuite.TripleDesRsa15,
                 SecurityHeaderLayout = SecurityHeaderLayout.Lax,
                 IncludeTimestamp = true,
