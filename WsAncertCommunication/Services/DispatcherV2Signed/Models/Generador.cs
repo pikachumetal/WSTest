@@ -5,19 +5,19 @@ using WsAncertCommunication.Helpers;
 namespace WsAncertCommunication.Services.DispatcherV2Signed.Models
 {
     [Serializable]
-    [XmlType(Namespace = WebServiceData.Namespace)]
-    public class GENERADORType
+    [XmlType(TypeName = "GENERADORType", Namespace = WebServiceData.Namespace)]
+    public class Generador
     {
         /// <remarks/>
-        [XmlElement(Order = 0)]
+        [XmlElement(ElementName = "NOMBRE_PROVEEDOR", Order = 0)]
         public string NOMBRE_PROVEEDOR { get; set; }
 
         /// <remarks/>
-        [XmlElement(Order = 1)]
+        [XmlElement(ElementName = "NOMBRE_APLICACION", Order = 1)]
         public string NOMBRE_APLICACION { get; set; }
 
         /// <remarks/>
-        [XmlElement(Order = 2)]
+        [XmlElement(ElementName = "VERSION_APLICACION", Order = 2)]
         public string VERSION_APLICACION { get; set; }
     }
 }

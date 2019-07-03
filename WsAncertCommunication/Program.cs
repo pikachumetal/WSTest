@@ -73,9 +73,9 @@ namespace WsAncertCommunication
         {
             return new ServiceDispatcher()
             {
-                TIPO_MSJ = (int)WsTipoMensaje.Request,
+                TIPO_MENSAJE = (int)WsTipoMensaje.Request,
                 EMISOR = WebServiceData.EmisorPruebas,
-                RECEP = WebServiceData.Receptor,
+                RECEPTOR = WebServiceData.Receptor,
                 SERVICIO = WebServiceAction.Prueba,
                 TIMESTAMP = DateTime.Now
             };
