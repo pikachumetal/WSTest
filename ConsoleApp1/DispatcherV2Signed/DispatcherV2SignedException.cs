@@ -1,10 +1,11 @@
-﻿using System;
+﻿using ConsoleApp1.Helpers;
+using System;
 using System.Xml.Serialization;
 
 namespace ConsoleApp1.DispatcherV2Signed
 {
     [Serializable]
-    [XmlType(Namespace = "http://inti.notariado.org/XML")]
+    [XmlType(Namespace = WebServiceData.Namespace)]
     public class DispatcherV2SignedException
     {
         [XmlElement(IsNullable = true, Order = 0)]

@@ -1,4 +1,5 @@
 ﻿using ConsoleApp1.DispatcherV2Signed;
+using ConsoleApp1.Helpers;
 using Microsoft.Samples.CustomTextMessageEncoder;
 using System;
 using System.Security.Cryptography.X509Certificates;
@@ -29,8 +30,8 @@ namespace ConsoleApp1
 
         private static EndpointAddress GetEndpoint()
         {
-            var identity = EndpointIdentity.CreateDnsIdentity("test.e-notario.notariado.org");
-            var address = new EndpointAddress(new Uri("https://test.e-notario.notariado.org/dispatcher-web/DispatcherV2Signed"), identity);
+            var identity = EndpointIdentity.CreateDnsIdentity(WebServiceData.DnsIdentity);
+            var address = new EndpointAddress(new Uri(WebServiceData.Soap11Endpoint), identity);
             return address;
         }
 
@@ -38,10 +39,20 @@ namespace ConsoleApp1
         {
             var client = new DispatcherV2SignedClient(getCustomBinding(), address);
             client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
-            client.ClientCredentials.ServiceCertificate.DefaultCertificate = new X509Certificate2(@"Certificates\test_e-notario_ssl.cer");
-            client.ClientCredentials.ClientCertificate.Certificate = new X509Certificate2(@"Certificates\clientelk.p12", "lk3035");
+            client.ClientCredentials.ServiceCertificate.DefaultCertificate = GetServerCertificate();
+            client.ClientCredentials.ClientCertificate.Certificate = GetClientCertificate();
             client.Endpoint.Contract.ProtectionLevel = System.Net.Security.ProtectionLevel.Sign;
             return client;
+        }
+
+        private static X509Certificate2 GetClientCertificate()
+        {
+            return new X509Certificate2(CertificateData.ClientCertificatePath, CertificateData.ClientCertificatePassword);
+        }
+
+        private static X509Certificate2 GetServerCertificate()
+        {
+            return new X509Certificate2(CertificateData.ServiceCertificatePath);
         }
 
         private static XmlElement GetBodyRequest()
@@ -131,8 +142,8 @@ namespace ConsoleApp1
             };
 
             var asymmetricSecurityBindingElement = new AsymmetricSecurityBindingElement
-            {               
-                AllowSerializedSigningTokenOnReply =true,
+            {
+                AllowSerializedSigningTokenOnReply = true,
 
                 InitiatorTokenParameters = new X509SecurityTokenParameters()
                 {
@@ -142,14 +153,14 @@ namespace ConsoleApp1
                 RecipientTokenParameters = new X509SecurityTokenParameters()
                 {
                     X509ReferenceStyle = X509KeyIdentifierClauseType.Any,
-                    InclusionMode = SecurityTokenInclusionMode.AlwaysToRecipient                    
+                    InclusionMode = SecurityTokenInclusionMode.AlwaysToRecipient
                 },
                 DefaultAlgorithmSuite = SecurityAlgorithmSuite.TripleDesRsa15,
                 SecurityHeaderLayout = SecurityHeaderLayout.Lax,
                 IncludeTimestamp = true,
                 EnableUnsecuredResponse = true,
                 MessageSecurityVersion = MessageSecurityVersion.WSSecurity10WSTrustFebruary2005WSSecureConversationFebruary2005WSSecurityPolicy11BasicSecurityProfile10
-              
+
             };
 
             asymmetricSecurityBindingElement.EndpointSupportingTokenParameters.Signed.Add(new X509SecurityTokenParameters());
