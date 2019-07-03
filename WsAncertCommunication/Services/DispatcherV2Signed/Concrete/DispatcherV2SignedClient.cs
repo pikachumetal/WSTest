@@ -9,25 +9,14 @@ namespace WsAncertCommunication.Services.DispatcherV2Signed.Concrete
 {
     public class DispatcherV2SignedClient : ClientBase<IDispatcherV2SignedService>, IDispatcherV2SignedService
     {
-        public DispatcherV2SignedClient() { }
-
-        public DispatcherV2SignedClient(string endpointConfigurationName)
-            : base(endpointConfigurationName) { }
-
-        public DispatcherV2SignedClient(string endpointConfigurationName, string remoteAddress)
-            : base(endpointConfigurationName, remoteAddress) { }
-
-        public DispatcherV2SignedClient(string endpointConfigurationName, EndpointAddress remoteAddress)
-            : base(endpointConfigurationName, remoteAddress) { }
-
         public DispatcherV2SignedClient(Binding binding, EndpointAddress remoteAddress)
-            : base(binding, remoteAddress) { }
-        
-        public XmlElement process(ServiceDispatcher header, XmlElement request)
+              : base(binding, remoteAddress) { }
+
+        public XmlElement Process(ServiceDispatcher header, XmlElement request)
         {
             var inValue = new processRequest
             {
-                Header = header, 
+                Header = header,
                 Request = request
             };
             var retVal = ((IDispatcherV2SignedService)(this)).process(inValue);
