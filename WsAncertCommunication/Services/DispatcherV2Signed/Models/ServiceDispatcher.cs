@@ -9,31 +9,31 @@ namespace WsAncertCommunication.Services.DispatcherV2Signed.Models
     public class ServiceDispatcher
     {
         /// <remarks/>
-        [XmlElement(Order = 0)]
+        [XmlElement(ElementName = "TIMESTAMP", Order = 0)]
         public DateTime TIMESTAMP { get; set; }
 
         /// <remarks/>
-        [XmlElement(Order = 1)]
-        public sbyte TIPO_MSJ { get; set; }
+        [XmlElement(ElementName = "TIPO_MSJ", Order = 1)]
+        public sbyte TIPO_MENSAJE { get; set; }
 
         /// <remarks/>
-        [XmlElement(Order = 2)]
+        [XmlElement(ElementName = "EMISOR", Order = 2)]
         public string EMISOR { get; set; }
 
         /// <remarks/>
-        [XmlElement(Order = 3)]
-        public string RECEP { get; set; } = "CGN";
+        [XmlElement(ElementName = "RECEP", Order = 3)]
+        public string RECEPTOR { get; set; } = "CGN";
 
         /// <remarks/>
-        [XmlElement(Order = 4)]
+        [XmlElement(ElementName = "CUV", Order = 4)]
         public string CUV { get; set; }
 
         /// <remarks/>
-        [XmlElement(Order = 5)]
+        [XmlElement(ElementName = "SERVICIO", Order = 5)]
         public string SERVICIO { get; set; }
 
         /// <remarks/>
-        [XmlElement(Order = 6)]
-        public GENERADORType GENERADOR { get; set; }
+        [XmlElement(ElementName = "GENERADOR", Order = 6)]
+        public Generador GENERADOR { get; set; }
     }
 }

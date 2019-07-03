@@ -61,12 +61,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DispatcherV2Signed\Concrete\DispatcherV2SignedClient.cs" />
     <Compile Include="Services\DispatcherV2Signed\Exceptions\DispatcherV2SignedException.cs" />
-    <Compile Include="Services\DispatcherV2Signed\Models\GENERADORType.cs" />
+    <Compile Include="Services\DispatcherV2Signed\Models\Generador.cs" />
     <Compile Include="Services\DispatcherV2Signed\Interfaces\IDispatcherV2SignedChannel.cs" />
     <Compile Include="Services\DispatcherV2Signed\Interfaces\IDispatcherV2SignedService.cs" />
     <Compile Include="Services\DispatcherV2Signed\Models\processRequest.cs" />
     <Compile Include="Services\DispatcherV2Signed\Models\processResponse.cs" />
-    <Compile Include="Services\DispatcherV2Signed\Models\SERVICE_DISPATCHER.cs" />
+    <Compile Include="Services\DispatcherV2Signed\Models\ServiceDispatcher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

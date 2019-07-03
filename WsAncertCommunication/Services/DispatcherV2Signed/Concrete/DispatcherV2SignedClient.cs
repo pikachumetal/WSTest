@@ -23,12 +23,12 @@ namespace WsAncertCommunication.Services.DispatcherV2Signed.Concrete
         public DispatcherV2SignedClient(Binding binding, EndpointAddress remoteAddress)
             : base(binding, remoteAddress) { }
         
-        public XmlElement process(ServiceDispatcher SERVICE_DISPATCHER, XmlElement SERVICE_DISPATCHER_REQUEST)
+        public XmlElement process(ServiceDispatcher header, XmlElement request)
         {
             var inValue = new processRequest
             {
-                Header = SERVICE_DISPATCHER, 
-                Request = SERVICE_DISPATCHER_REQUEST
+                Header = header, 
+                Request = request
             };
             var retVal = ((IDispatcherV2SignedService)(this)).process(inValue);
             return retVal.Response;
