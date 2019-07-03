@@ -5,7 +5,7 @@ using WsAncertCommunication.Helpers;
 namespace WsAncertCommunication.Services.DispatcherV2Signed.Models
 {
     [MessageContract(IsWrapped = false)]
-    public class processRequest
+    public class ProcessRequest
     {
         [MessageHeader(Name = "SERVICE_DISPATCHER", Namespace = WebServiceData.Namespace)]
         public ServiceDispatcher Header;
@@ -13,9 +13,9 @@ namespace WsAncertCommunication.Services.DispatcherV2Signed.Models
         [MessageBodyMember(Name = "SERVICE_DISPATCHER_REQUEST", Namespace = WebServiceData.Namespace, Order = 0)]
         public XmlElement Request;
 
-        public processRequest() { }
+        public ProcessRequest() { }
 
-        public processRequest(ServiceDispatcher header, XmlElement request)
+        public ProcessRequest(ServiceDispatcher header, XmlElement request)
         {
             Header = header;
             Request = request;
