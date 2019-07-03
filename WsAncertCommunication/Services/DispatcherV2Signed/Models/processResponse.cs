@@ -7,14 +7,14 @@ namespace WsAncertCommunication.Services.DispatcherV2Signed.Models
     [MessageContract(IsWrapped = false)]
     public class processResponse
     {
-        [MessageBodyMember(Namespace = WebServiceData.Namespace, Order = 0)]
-        public XmlElement SERVICE_DISPATCHER_RESPONSE;
+        [MessageBodyMember(Name = "SERVICE_DISPATCHER_RESPONSE", Namespace = WebServiceData.Namespace, Order = 0)]
+        public XmlElement ServiceDispatcherResponse;
 
         public processResponse() { }
 
-        public processResponse(XmlElement SERVICE_DISPATCHER_RESPONSE)
+        public processResponse(XmlElement serviceDispatcherResponse)
         {
-            this.SERVICE_DISPATCHER_RESPONSE = SERVICE_DISPATCHER_RESPONSE;
+            ServiceDispatcherResponse = serviceDispatcherResponse;
         }
     }
 }
