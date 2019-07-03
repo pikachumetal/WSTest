@@ -2,7 +2,7 @@
 using System.Xml.Serialization;
 using WsAncertCommunication.Helpers;
 
-namespace WsAncertCommunication.DispatcherV2Signed
+namespace WsAncertCommunication.Services.DispatcherV2Signed
 {
     [Serializable]
     [XmlType(Namespace = WebServiceData.Namespace)]

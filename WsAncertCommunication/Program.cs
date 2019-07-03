@@ -3,28 +3,26 @@ using System.Security.Cryptography.X509Certificates;
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.ServiceModel.Security;
-using System.ServiceModel.Security.Tokens;
-using System.Text;
 using System.Xml;
 using WsAncertCommunication.Bindings.CustomTextMessage;
-using WsAncertCommunication.DispatcherV2Signed;
 using WsAncertCommunication.Helpers;
+using WsAncertCommunication.Services.DispatcherV2Signed;
 
 namespace WsAncertCommunication
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
-            Console.WriteLine($"Creating the WS-client ...");
+            Console.WriteLine("Creating the WS-client ...");
             var client = GetService(GetEndpoint());
 
-            Console.WriteLine($"Invoke the WS-client ...");
+            Console.WriteLine("Invoke the WS-client ...");
             var response = client.process(GetHeader(), GetBodyRequest());
 
             Console.WriteLine($"WS-Response: {response.OuterXml}");
 
-            Console.WriteLine($"Press any key to close ...");
+            Console.WriteLine("Press any key to close ...");
             Console.ReadLine();
         }
 
@@ -37,11 +35,16 @@ namespace WsAncertCommunication
 
         private static DispatcherV2SignedClient GetService(EndpointAddress address)
         {
-            var client = new DispatcherV2SignedClient(getCustomBinding(), address);
+            var client = new DispatcherV2SignedClient(GetCustomBinding(), address);
+
+            if (client.ClientCredentials == null) throw new ArgumentNullException(nameof(client));
+
             client.ClientCredentials.ServiceCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.None;
             client.ClientCredentials.ServiceCertificate.DefaultCertificate = GetServerCertificate();
             client.ClientCredentials.ClientCertificate.Certificate = GetClientCertificate();
+
             client.Endpoint.Contract.ProtectionLevel = System.Net.Security.ProtectionLevel.Sign;
+
             return client;
         }
 
@@ -75,7 +78,7 @@ namespace WsAncertCommunication
             };
         }
 
-        private static CustomBinding getCustomBinding()
+        private static CustomBinding GetCustomBinding()
         {
             var binding = new CustomBinding();
 
@@ -124,55 +127,6 @@ namespace WsAncertCommunication
                 RequireClientCertificate = true,
                 UseDefaultWebProxy = true
             };
-        }
-
-
-        private static Binding GetCustomBinding()
-        {
-            var httpsBindingElement = new HttpsTransportBindingElement
-            {
-                AllowCookies = false,
-                BypassProxyOnLocal = false,
-                HostNameComparisonMode = HostNameComparisonMode.WeakWildcard,
-                MaxBufferPoolSize = 524288,
-                MaxBufferSize = 65536,
-                MaxReceivedMessageSize = 65536,
-                RequireClientCertificate = true,
-                UseDefaultWebProxy = true
-            };
-
-            var asymmetricSecurityBindingElement = new AsymmetricSecurityBindingElement
-            {
-                AllowSerializedSigningTokenOnReply = true,
-
-                InitiatorTokenParameters = new X509SecurityTokenParameters()
-                {
-                    X509ReferenceStyle = X509KeyIdentifierClauseType.Any,
-                    InclusionMode = SecurityTokenInclusionMode.AlwaysToInitiator
-                },
-                RecipientTokenParameters = new X509SecurityTokenParameters()
-                {
-                    X509ReferenceStyle = X509KeyIdentifierClauseType.Any,
-                    InclusionMode = SecurityTokenInclusionMode.AlwaysToRecipient
-                },
-                DefaultAlgorithmSuite = SecurityAlgorithmSuite.TripleDesRsa15,
-                SecurityHeaderLayout = SecurityHeaderLayout.Lax,
-                IncludeTimestamp = true,
-                EnableUnsecuredResponse = true,
-                MessageSecurityVersion = MessageSecurityVersion.WSSecurity10WSTrustFebruary2005WSSecureConversationFebruary2005WSSecurityPolicy11BasicSecurityProfile10
-
-            };
-
-            asymmetricSecurityBindingElement.EndpointSupportingTokenParameters.Signed.Add(new X509SecurityTokenParameters());
-            asymmetricSecurityBindingElement.EndpointSupportingTokenParameters.SetKeyDerivation(false);
-
-            var myBinding = new CustomBinding();
-
-            myBinding.Elements.Add(asymmetricSecurityBindingElement);
-            myBinding.Elements.Add(new TextMessageEncodingBindingElement(MessageVersion.Soap11, Encoding.UTF8));
-            myBinding.Elements.Add(httpsBindingElement);
-
-            return myBinding;
         }
     }
 }

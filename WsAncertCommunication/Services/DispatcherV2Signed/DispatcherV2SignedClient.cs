@@ -3,7 +3,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Xml;
 
-namespace WsAncertCommunication.DispatcherV2Signed
+namespace WsAncertCommunication.Services.DispatcherV2Signed
 {
     public class DispatcherV2SignedClient : ClientBase<IDispatcherV2SignedService>, IDispatcherV2SignedService
     {

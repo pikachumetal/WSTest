@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Xml.Serialization;
 
-namespace WsAncertCommunication.DispatcherV2Signed
+namespace WsAncertCommunication.Services.DispatcherV2Signed
 {
     [Serializable]
     [XmlType(Namespace = "http://inti.notariado.org/XML")]
