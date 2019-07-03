@@ -64,8 +64,8 @@
     <Compile Include="Services\DispatcherV2Signed\Models\Generador.cs" />
     <Compile Include="Services\DispatcherV2Signed\Interfaces\IDispatcherV2SignedChannel.cs" />
     <Compile Include="Services\DispatcherV2Signed\Interfaces\IDispatcherV2SignedService.cs" />
-    <Compile Include="Services\DispatcherV2Signed\Models\processRequest.cs" />
-    <Compile Include="Services\DispatcherV2Signed\Models\processResponse.cs" />
+    <Compile Include="Services\DispatcherV2Signed\Models\ProcessRequest.cs" />
+    <Compile Include="Services\DispatcherV2Signed\Models\ProcessResponse.cs" />
     <Compile Include="Services\DispatcherV2Signed\Models\ServiceDispatcher.cs" />
   </ItemGroup>
   <ItemGroup>

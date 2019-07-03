@@ -19,14 +19,14 @@ namespace WsAncertCommunication.Services.DispatcherV2Signed.Concrete
                 Header = header,
                 Request = request
             };
-            var retVal = ((IDispatcherV2SignedService)(this)).process(inValue);
+            var retVal = ((IDispatcherV2SignedService)(this)).Process(inValue);
             return retVal.Response;
         }
 
         [EditorBrowsable(EditorBrowsableState.Advanced)]
-        processResponse IDispatcherV2SignedService.process(ProcessRequest request)
+        ProcessResponse IDispatcherV2SignedService.Process(ProcessRequest request)
         {
-            return Channel.process(request);
+            return Channel.Process(request);
         }
     }
 }

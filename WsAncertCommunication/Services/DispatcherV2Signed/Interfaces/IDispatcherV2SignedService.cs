@@ -12,6 +12,6 @@ namespace WsAncertCommunication.Services.DispatcherV2Signed.Interfaces
         [OperationContract(Action = "", ReplyAction = "*")]
         [FaultContract(typeof(DispatcherV2SignedException), Action = "", Name = "fault")]
         [XmlSerializerFormat(SupportFaults = true)]
-        processResponse process(ProcessRequest request);
+        ProcessResponse Process(ProcessRequest request);
     }
 }
