@@ -34,7 +34,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,11 +47,33 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bindings\CustomTextMessage\ConfigurationStrings.cs" />
+    <Compile Include="Bindings\CustomTextMessage\CustomTextMessageEncoder.cs" />
+    <Compile Include="Bindings\CustomTextMessage\CustomTextMessageEncoderFactory.cs" />
+    <Compile Include="Bindings\CustomTextMessage\CustomTextMessageEncodingBindingElement.cs" />
+    <Compile Include="Bindings\CustomTextMessage\CustomTextMessageEncodingBindingSection.cs" />
+    <Compile Include="Bindings\CustomTextMessage\MessageVersionConverter.cs" />
+    <Compile Include="DispatcherV2Signed\DispatcherV2SignedClient.cs" />
+    <Compile Include="DispatcherV2Signed\DispatcherV2SignedException.cs" />
+    <Compile Include="DispatcherV2Signed\GENERADORType.cs" />
+    <Compile Include="DispatcherV2Signed\IDispatcherV2SignedChannel.cs" />
+    <Compile Include="DispatcherV2Signed\IDispatcherV2SignedService.cs" />
+    <Compile Include="DispatcherV2Signed\processRequest.cs" />
+    <Compile Include="DispatcherV2Signed\processResponse.cs" />
+    <Compile Include="DispatcherV2Signed\SERVICE_DISPATCHER.cs" />
+    <Compile Include="Helpers\CertificateData.cs" />
+    <Compile Include="Helpers\WebServiceData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Certificates\keystore.p12">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Certificates\ssl.cer">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
