@@ -70,10 +70,10 @@ namespace WsAncertCommunication
         {
             return new SERVICE_DISPATCHER()
             {
-                TIPO_MSJ = 1,
-                EMISOR = "test-entidad",
-                RECEP = "CGN",
-                SERVICIO = "TEST00002",
+                TIPO_MSJ = (int)WsTipoMensaje.Request,
+                EMISOR = WebServiceData.EmisorPruebas,
+                RECEP = WebServiceData.Receptor,
+                SERVICIO = WebServiceAction.Prueba,
                 TIMESTAMP = DateTime.Now
             };
         }

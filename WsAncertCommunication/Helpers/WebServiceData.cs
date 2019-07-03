@@ -6,5 +6,8 @@
         public const string DnsIdentity = "test.e-notario.notariado.org";
         public const string Soap11Endpoint = "https://test.e-notario.notariado.org/dispatcher-web/DispatcherV2Signed";
         public const string Soap12Endpoint = "https://test.e-notario.notariado.org/dispatcher-web/DispatcherV2SignedSoap12";
+        public const string EmisorPruebas = "test-entidad";
+        public const string Emisor = "Bilbao Hipotecaria";
+        public const string Receptor = "CGN";
     }
 }

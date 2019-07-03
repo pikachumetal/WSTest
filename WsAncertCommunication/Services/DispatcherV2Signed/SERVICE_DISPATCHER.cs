@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Xml.Serialization;
+using WsAncertCommunication.Helpers;
 
 namespace WsAncertCommunication.Services.DispatcherV2Signed
 {
     [Serializable]
-    [XmlType(AnonymousType = true, Namespace = "http://inti.notariado.org/XML")]
+    [XmlType(AnonymousType = true, Namespace = WebServiceData.Namespace)]
     public class SERVICE_DISPATCHER
     {
         /// <remarks/>
