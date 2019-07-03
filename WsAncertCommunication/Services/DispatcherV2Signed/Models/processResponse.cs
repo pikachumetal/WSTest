@@ -8,13 +8,13 @@ namespace WsAncertCommunication.Services.DispatcherV2Signed.Models
     public class processResponse
     {
         [MessageBodyMember(Name = "SERVICE_DISPATCHER_RESPONSE", Namespace = WebServiceData.Namespace, Order = 0)]
-        public XmlElement ServiceDispatcherResponse;
+        public XmlElement Response;
 
         public processResponse() { }
 
-        public processResponse(XmlElement serviceDispatcherResponse)
+        public processResponse(XmlElement response)
         {
-            ServiceDispatcherResponse = serviceDispatcherResponse;
+            Response = response;
         }
     }
 }

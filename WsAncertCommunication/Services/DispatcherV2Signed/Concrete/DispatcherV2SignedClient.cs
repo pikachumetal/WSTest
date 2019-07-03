@@ -27,11 +27,11 @@ namespace WsAncertCommunication.Services.DispatcherV2Signed.Concrete
         {
             var inValue = new processRequest
             {
-                ServiceDispatcher = SERVICE_DISPATCHER, 
-                ServiceDispatcherRequest = SERVICE_DISPATCHER_REQUEST
+                Header = SERVICE_DISPATCHER, 
+                Request = SERVICE_DISPATCHER_REQUEST
             };
             var retVal = ((IDispatcherV2SignedService)(this)).process(inValue);
-            return retVal.ServiceDispatcherResponse;
+            return retVal.Response;
         }
 
         [EditorBrowsable(EditorBrowsableState.Advanced)]
