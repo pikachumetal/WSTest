@@ -8,16 +8,16 @@ namespace WsAncertCommunication.Services.DispatcherV2Signed.Models
     public class processRequest
     {
         [MessageHeader(Namespace = WebServiceData.Namespace)]
-        public ServiceDispatcher SERVICE_DISPATCHER;
+        public ServiceDispatcher ServiceDispatcher;
 
         [MessageBodyMember(Namespace = WebServiceData.Namespace, Order = 0)]
         public XmlElement SERVICE_DISPATCHER_REQUEST;
 
         public processRequest() { }
 
-        public processRequest(ServiceDispatcher SERVICE_DISPATCHER, XmlElement SERVICE_DISPATCHER_REQUEST)
+        public processRequest(ServiceDispatcher serviceDispatcher, XmlElement SERVICE_DISPATCHER_REQUEST)
         {
-            this.SERVICE_DISPATCHER = SERVICE_DISPATCHER;
+            ServiceDispatcher = serviceDispatcher;
             this.SERVICE_DISPATCHER_REQUEST = SERVICE_DISPATCHER_REQUEST;
         }
     }
