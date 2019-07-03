@@ -5,14 +5,14 @@ using WsAncertCommunication.Helpers;
 namespace WsAncertCommunication.Services.DispatcherV2Signed.Models
 {
     [MessageContract(IsWrapped = false)]
-    public class processResponse
+    public class ProcessResponse
     {
         [MessageBodyMember(Name = "SERVICE_DISPATCHER_RESPONSE", Namespace = WebServiceData.Namespace, Order = 0)]
         public XmlElement Response;
 
-        public processResponse() { }
+        public ProcessResponse() { }
 
-        public processResponse(XmlElement response)
+        public ProcessResponse(XmlElement response)
         {
             Response = response;
         }
