@@ -2,8 +2,10 @@
 using System.ServiceModel;
 using System.ServiceModel.Channels;
 using System.Xml;
+using WsAncertCommunication.Services.DispatcherV2Signed.Interfaces;
+using WsAncertCommunication.Services.DispatcherV2Signed.Models;
 
-namespace WsAncertCommunication.Services.DispatcherV2Signed
+namespace WsAncertCommunication.Services.DispatcherV2Signed.Concrete
 {
     public class DispatcherV2SignedClient : ClientBase<IDispatcherV2SignedService>, IDispatcherV2SignedService
     {
