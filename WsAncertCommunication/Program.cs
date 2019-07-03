@@ -21,7 +21,7 @@ namespace WsAncertCommunication
             var client = GetService(GetEndpoint());
 
             Console.WriteLine("Invoke the WS-client ...");
-            var response = client.process(GetHeader(), GetBodyRequest());
+            var response = client.Process(GetHeader(), GetBodyRequest());
 
             Console.WriteLine($"WS-Response: {response.OuterXml}");
 
