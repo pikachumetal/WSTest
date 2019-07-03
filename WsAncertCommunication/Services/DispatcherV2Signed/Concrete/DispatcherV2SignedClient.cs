@@ -27,7 +27,7 @@ namespace WsAncertCommunication.Services.DispatcherV2Signed.Concrete
         {
             var inValue = new processRequest
             {
-                SERVICE_DISPATCHER = SERVICE_DISPATCHER, 
+                ServiceDispatcher = SERVICE_DISPATCHER, 
                 SERVICE_DISPATCHER_REQUEST = SERVICE_DISPATCHER_REQUEST
             };
             var retVal = ((IDispatcherV2SignedService)(this)).process(inValue);
