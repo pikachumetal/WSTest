@@ -5,8 +5,8 @@ using WsAncertCommunication.Helpers;
 namespace WsAncertCommunication.Services.DispatcherV2Signed.Models
 {
     [Serializable]
-    [XmlType(AnonymousType = true, Namespace = WebServiceData.Namespace)]
-    public class SERVICE_DISPATCHER
+    [XmlType(TypeName = "SERVICE_DISPATCHER", AnonymousType = true, Namespace = WebServiceData.Namespace)]
+    public class ServiceDispatcher
     {
         /// <remarks/>
         [XmlElement(Order = 0)]

@@ -6,7 +6,6 @@ using System.ServiceModel.Security;
 using System.Xml;
 using WsAncertCommunication.Bindings.CustomTextMessage;
 using WsAncertCommunication.Helpers;
-using WsAncertCommunication.Services.DispatcherV2Signed;
 using WsAncertCommunication.Services.DispatcherV2Signed.Concrete;
 using WsAncertCommunication.Services.DispatcherV2Signed.Models;
 
@@ -16,6 +15,8 @@ namespace WsAncertCommunication
     {
         private static void Main()
         {
+            Console.WriteLine("WsAncertCommunication starts ...");
+
             Console.WriteLine("Creating the WS-client ...");
             var client = GetService(GetEndpoint());
 
@@ -24,7 +25,7 @@ namespace WsAncertCommunication
 
             Console.WriteLine($"WS-Response: {response.OuterXml}");
 
-            Console.WriteLine("Press any key to close ...");
+            Console.WriteLine("Press enter to close ...");
             Console.ReadLine();
         }
 
@@ -68,9 +69,9 @@ namespace WsAncertCommunication
         }
 
 
-        private static SERVICE_DISPATCHER GetHeader()
+        private static ServiceDispatcher GetHeader()
         {
-            return new SERVICE_DISPATCHER()
+            return new ServiceDispatcher()
             {
                 TIPO_MSJ = (int)WsTipoMensaje.Request,
                 EMISOR = WebServiceData.EmisorPruebas,
