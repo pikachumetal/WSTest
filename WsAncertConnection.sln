@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WsAncertConnection.NetFrame
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WsAncertCommunication", "WsAncertCommunication\WsAncertCommunication.csproj", "{C8591E52-85E4-40B8-99CD-364DC2186EC8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WsAncertCommunication", "WsAncertCommunication\WsAncertCommunication.csproj", "{C8591E52-85E4-40B8-99CD-364DC2186EC8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
