@@ -14,7 +14,7 @@ namespace WsAncertCommunication.Services.DispatcherV2Signed.Concrete
 
         public XmlElement Process(ServiceDispatcher header, XmlElement request)
         {
-            var inValue = new processRequest
+            var inValue = new ProcessRequest
             {
                 Header = header,
                 Request = request
@@ -24,7 +24,7 @@ namespace WsAncertCommunication.Services.DispatcherV2Signed.Concrete
         }
 
         [EditorBrowsable(EditorBrowsableState.Advanced)]
-        processResponse IDispatcherV2SignedService.process(processRequest request)
+        processResponse IDispatcherV2SignedService.process(ProcessRequest request)
         {
             return Channel.process(request);
         }
