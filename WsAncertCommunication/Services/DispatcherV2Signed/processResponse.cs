@@ -1,7 +1,7 @@
 ﻿using System.ServiceModel;
 using System.Xml;
 
-namespace WsAncertCommunication.DispatcherV2Signed
+namespace WsAncertCommunication.Services.DispatcherV2Signed
 {
     [MessageContract(IsWrapped = false)]
     public class processResponse

@@ -53,18 +53,18 @@
     <Compile Include="Bindings\CustomTextMessage\CustomTextMessageEncodingBindingElement.cs" />
     <Compile Include="Bindings\CustomTextMessage\CustomTextMessageEncodingBindingSection.cs" />
     <Compile Include="Bindings\CustomTextMessage\MessageVersionConverter.cs" />
-    <Compile Include="DispatcherV2Signed\DispatcherV2SignedClient.cs" />
-    <Compile Include="DispatcherV2Signed\DispatcherV2SignedException.cs" />
-    <Compile Include="DispatcherV2Signed\GENERADORType.cs" />
-    <Compile Include="DispatcherV2Signed\IDispatcherV2SignedChannel.cs" />
-    <Compile Include="DispatcherV2Signed\IDispatcherV2SignedService.cs" />
-    <Compile Include="DispatcherV2Signed\processRequest.cs" />
-    <Compile Include="DispatcherV2Signed\processResponse.cs" />
-    <Compile Include="DispatcherV2Signed\SERVICE_DISPATCHER.cs" />
     <Compile Include="Helpers\CertificateData.cs" />
     <Compile Include="Helpers\WebServiceData.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DispatcherV2Signed\DispatcherV2SignedClient.cs" />
+    <Compile Include="Services\DispatcherV2Signed\DispatcherV2SignedException.cs" />
+    <Compile Include="Services\DispatcherV2Signed\GENERADORType.cs" />
+    <Compile Include="Services\DispatcherV2Signed\IDispatcherV2SignedChannel.cs" />
+    <Compile Include="Services\DispatcherV2Signed\IDispatcherV2SignedService.cs" />
+    <Compile Include="Services\DispatcherV2Signed\processRequest.cs" />
+    <Compile Include="Services\DispatcherV2Signed\processResponse.cs" />
+    <Compile Include="Services\DispatcherV2Signed\SERVICE_DISPATCHER.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
