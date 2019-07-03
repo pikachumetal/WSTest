@@ -7,18 +7,18 @@ namespace WsAncertCommunication.Services.DispatcherV2Signed.Models
     [MessageContract(IsWrapped = false)]
     public class processRequest
     {
-        [MessageHeader(Namespace = WebServiceData.Namespace)]
+        [MessageHeader(Name = "SERVICE_DISPATCHER", Namespace = WebServiceData.Namespace)]
         public ServiceDispatcher ServiceDispatcher;
 
-        [MessageBodyMember(Namespace = WebServiceData.Namespace, Order = 0)]
-        public XmlElement SERVICE_DISPATCHER_REQUEST;
+        [MessageBodyMember(Name = "SERVICE_DISPATCHER_REQUEST", Namespace = WebServiceData.Namespace, Order = 0)]
+        public XmlElement ServiceDispatcherRequest;
 
         public processRequest() { }
 
-        public processRequest(ServiceDispatcher serviceDispatcher, XmlElement SERVICE_DISPATCHER_REQUEST)
+        public processRequest(ServiceDispatcher serviceDispatcher, XmlElement serviceDispatcherRequest)
         {
             ServiceDispatcher = serviceDispatcher;
-            this.SERVICE_DISPATCHER_REQUEST = SERVICE_DISPATCHER_REQUEST;
+            ServiceDispatcherRequest = serviceDispatcherRequest;
         }
     }
 }
