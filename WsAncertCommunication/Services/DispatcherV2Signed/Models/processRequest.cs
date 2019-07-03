@@ -2,7 +2,7 @@
 using System.Xml;
 using WsAncertCommunication.Helpers;
 
-namespace WsAncertCommunication.Services.DispatcherV2Signed
+namespace WsAncertCommunication.Services.DispatcherV2Signed.Models
 {
     [MessageContract(IsWrapped = false)]
     public class processRequest

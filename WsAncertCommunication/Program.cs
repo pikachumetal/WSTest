@@ -7,6 +7,8 @@ using System.Xml;
 using WsAncertCommunication.Bindings.CustomTextMessage;
 using WsAncertCommunication.Helpers;
 using WsAncertCommunication.Services.DispatcherV2Signed;
+using WsAncertCommunication.Services.DispatcherV2Signed.Concrete;
+using WsAncertCommunication.Services.DispatcherV2Signed.Models;
 
 namespace WsAncertCommunication
 {
