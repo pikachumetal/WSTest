@@ -1,12 +1,13 @@
 ﻿using System.ServiceModel;
 using System.Xml;
+using WsAncertCommunication.Helpers;
 
 namespace WsAncertCommunication.Services.DispatcherV2Signed
 {
     [MessageContract(IsWrapped = false)]
     public class processResponse
     {
-        [MessageBodyMember(Namespace = "http://inti.notariado.org/XML", Order = 0)]
+        [MessageBodyMember(Namespace = WebServiceData.Namespace, Order = 0)]
         public XmlElement SERVICE_DISPATCHER_RESPONSE;
 
         public processResponse() { }

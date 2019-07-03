@@ -54,7 +54,9 @@
     <Compile Include="Bindings\CustomTextMessage\CustomTextMessageEncodingBindingSection.cs" />
     <Compile Include="Bindings\CustomTextMessage\MessageVersionConverter.cs" />
     <Compile Include="Helpers\CertificateData.cs" />
+    <Compile Include="Helpers\WebServiceAction.cs" />
     <Compile Include="Helpers\WebServiceData.cs" />
+    <Compile Include="Helpers\WsTipoMensaje.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\DispatcherV2Signed\DispatcherV2SignedClient.cs" />
